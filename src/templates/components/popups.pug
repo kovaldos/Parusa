@@ -1,0 +1,46 @@
+.popup#popup
+    .popup__body
+        .popup__content
+            a.popup__close.close-popup(href="#")
+                svg(width="15" height="15")
+                    use(xlink:href="./assets/images/sprite.svg#close-pop-up")
+            p.popup__title Обратиться к нам
+            p.popup__text Заполните форму и мы вам перезвоним в ближайшее время
+            form.popup__form(action="#")
+                input(type="text" placeholder="Ваше имя")
+                input(type="tel" placeholder="Ваш телефон")
+                .popup__agreement
+                    p.popup__agreement-text Нажимая на кнопку, я подтверждаю, что согласен на обработку моих персональных данных, а также с Пользовательским соглашением
+                    a.popup-link.popup__form-button(href="#popup_2") Отправить
+.popup.popup-done#popup_2 
+    .popup__body.popup-done__body
+        .popup__content.popup-done__content     
+            a.popup__close.close-popup(href="#")
+                svg(width="15" height="15")
+                    use(xlink:href="./assets/images/sprite.svg#close-pop-up")
+            p.popup__title Спасибо за обращение
+            p.popup__text Наш менеджер свяжется с вами в течении 15 минут
+            a(href="index.html").popup-done__link.popup__form-button На главную
+.popup#popup_3
+    .popup__body
+        .popup__content
+            a.popup__close.close-popup(href="#")
+                svg(width="15" height="15")
+                    use(xlink:href="./assets/images/sprite.svg#close-pop-up")
+            p.popup__title Скачать каталог
+            p.popup__text
+            form.popup__form(action="#")
+                input(type="text" placeholder="Ваше имя")
+                input(type="email" placeholder="E-mail")
+                .popup__agreement
+                    p.popup__agreement-text Нажимая на кнопку, я подтверждаю, что согласен на обработку моих персональных данных, а также с Пользовательским соглашением
+                    a.popup-link.popup__form-button(href="#popup_4") Отправить 
+.popup.popup-done#popup_4 
+    .popup__body.popup-done__body
+        .popup__content.popup-done__content
+            a.popup__close.close-popup(href="#")
+                svg(width="15" height="15")
+                    use(xlink:href="./assets/images/sprite.svg#close-pop-up")
+            p.popup__title Спасибо за заявку!
+            p.popup__text Каталог выслан на электронную почту, указанную в форме
+            a(href="index.html").popup-done__link.popup__form-button На главную  
