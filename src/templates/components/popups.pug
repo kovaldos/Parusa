@@ -1,46 +1,14 @@
 .popup#popup
     .popup__body
         .popup__content
-            a.popup__close.close-popup(href="#")
-                svg(width="15" height="15")
-                    use(xlink:href="./assets/images/sprite.svg#close-pop-up")
-            p.popup__title Обратиться к нам
-            p.popup__text Заполните форму и мы вам перезвоним в ближайшее время
+            button.popup__close.close-popup(type="button")
+                img(src="./assets/images/close-popup.svg")
+            h2.popup__title Запросить график аренды
+            p.popup__text Заолните поля ниже и мы свяжемся с Вами в ближайшее время.
             form.popup__form(action="#")
-                input(type="text" placeholder="Ваше имя")
-                input(type="tel" placeholder="Ваш телефон")
+                input.popup__form-input#name(type="text" placeholder="Имя" required pattern="^[а-яА-ЯёЁa-zA-Z0-9]+$")
+                input.popup__form-input#phone-number(type="tel" placeholder="Телефон" required pattern="\+7\s?[\(]{0,1}9[0-9]{2}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}")
+                input.popup__form-input#email(type="email" placeholder="E-mail" required pattern="[^@\s]+@[^@\s]+")
                 .popup__agreement
-                    p.popup__agreement-text Нажимая на кнопку, я подтверждаю, что согласен на обработку моих персональных данных, а также с Пользовательским соглашением
-                    a.popup-link.popup__form-button(href="#popup_2") Отправить
-.popup.popup-done#popup_2 
-    .popup__body.popup-done__body
-        .popup__content.popup-done__content     
-            a.popup__close.close-popup(href="#")
-                svg(width="15" height="15")
-                    use(xlink:href="./assets/images/sprite.svg#close-pop-up")
-            p.popup__title Спасибо за обращение
-            p.popup__text Наш менеджер свяжется с вами в течении 15 минут
-            a(href="index.html").popup-done__link.popup__form-button На главную
-.popup#popup_3
-    .popup__body
-        .popup__content
-            a.popup__close.close-popup(href="#")
-                svg(width="15" height="15")
-                    use(xlink:href="./assets/images/sprite.svg#close-pop-up")
-            p.popup__title Скачать каталог
-            p.popup__text
-            form.popup__form(action="#")
-                input(type="text" placeholder="Ваше имя")
-                input(type="email" placeholder="E-mail")
-                .popup__agreement
-                    p.popup__agreement-text Нажимая на кнопку, я подтверждаю, что согласен на обработку моих персональных данных, а также с Пользовательским соглашением
-                    a.popup-link.popup__form-button(href="#popup_4") Отправить 
-.popup.popup-done#popup_4 
-    .popup__body.popup-done__body
-        .popup__content.popup-done__content
-            a.popup__close.close-popup(href="#")
-                svg(width="15" height="15")
-                    use(xlink:href="./assets/images/sprite.svg#close-pop-up")
-            p.popup__title Спасибо за заявку!
-            p.popup__text Каталог выслан на электронную почту, указанную в форме
-            a(href="index.html").popup-done__link.popup__form-button На главную  
+                    button.popup-link.popup__form-button(type="submit") Отправить
+                    p.popup__agreement-text Отправляя данную форму, Вы соглашаетесь на обработку персональных данных

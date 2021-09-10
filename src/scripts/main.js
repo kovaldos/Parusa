@@ -1,7 +1,6 @@
 let myMap = document.getElementById('map'),
-    regionName = "Санкт-Петербург",
-    // regionNames = ["Санкт-Петербург, Кировский район", "Санкт-Петербург, Адмиралтейский район", "Санкт-Петербург, Василеостровский район", "Санкт-Петербург, Выборгский район", "Санкт-Петербург, Калининский район", "Санкт-Петербург, Кировский район", "Санкт-Петербург, Колпинский район",
-    // "Санкт-Петербург, Красногвардейский район", "Санкт-Петербург, Красносельский район", "Санкт-Петербург, Кронштадтcкий район", "Санкт-Петербург, Курортный район", "Санкт-Петербург, Московский район", "Санкт-Петербург, Московский район", "Санкт-Петербург, Невский район", "Санкт-Петербург, Петроградский район", "Санкт-Петербург, Петродворцовый район", "Санкт-Петербург, Приморский район", "Санкт-Петербург, Пушкинский район", "Санкт-Петербург, Фрунзенский район", "Санкт-Петербург, Центральный район"],
+    regionNames = ["Санкт-Петербург, Кировский район", "Санкт-Петербург, Адмиралтейский район", "Санкт-Петербург, Василеостровский район"],
+    // regionNames = ["Санкт-Петербург, Кировский район", "Санкт-Петербург, Адмиралтейский район", "Санкт-Петербург, Василеостровский район", "Санкт-Петербург, Выборгский район", "Санкт-Петербург, Калининский район", "Санкт-Петербург, Колпинский район", "Санкт-Петербург, Красногвардейский район", "Санкт-Петербург, Красносельский район", "Санкт-Петербург, Кронштадтcкий район", "Санкт-Петербург, Курортный район", "Санкт-Петербург, Московский район", "Санкт-Петербург, Невский район", "Санкт-Петербург, Петроградский район", "Санкт-Петербург, Петродворцовый район", "Санкт-Петербург, Приморский район", "Санкт-Петербург, Пушкинский район", "Санкт-Петербург, Фрунзенский район", "Санкт-Петербург, Центральный район"],
     center = [30.313218, 59.960850],
     zoom = 10;
 
@@ -21,22 +20,154 @@ if (myMap) {
             //... отключаем перетаскивание карты
             myMap.behaviors.disable('drag');
         };
-        // 1. Запрашиваем через геокодер район (у Яндекса этой возможности пока нет, придется пользоваться OSM)
-        var url = "http://nominatim.openstreetmap.org/search";
-        $.getJSON(url, { q: regionName, format: "json", polygon_geojson: 1 })
-            .then(function (data) {
-                $.each(data, function (ix, place) {
-                    if ("relation" == place.osm_type) {
-                        // 2. Создаем полигон с нужными координатами
-                        var p = new ymaps.Polygon(place.geojson.coordinates);
-                        // 3. Добавляем полигон на карту
-                        map.geoObjects.add(p);
-                    }
-                });
-            }, function (err) {
-                console.log(err);
-            });
+   
+        regionNames.forEach (regionName => {
+            // 1. Запрашиваем через геокодер район (у Яндекса этой возможности пока нет, придется пользоваться OSM)
+            let url = "http://nominatim.openstreetmap.org/search";
+            $.getJSON(url, { q: regionName, format: "json", polygon_geojson: 1 })
+                .then(function (data) {
+                    $.each(data, function (ix, place) {
+                        if ("relation" == place.osm_type) {
+                            // 2. Создаем полигон с нужными координатами
+                            let p = new ymaps.Polygon(place.geojson.coordinates);
+                            // 3. Добавляем полигон на карту
+                            myMap.geoObjects.add(p);
+                            p.events.add('mouseenter', function (e) {
+                                let target = e.get('target');
+                                console.log(target);
+                                options.fill = false;
+                                target.options.fillColor="#000000";
 
+                                // ToDo найти свойство тип курсора и заливка в объекте-таргете
+                               
+                               
+                            })
+
+                            
+                        }
+                    });
+                }, function (err) {
+                    console.log(err);
+                });
+        })            
     }
 };
+
+
+const phoneMask = IMask(
+    document.getElementById('phone-number'), {
+        mask: '+{7} (000) 000 0000',
+        prepare: (appended, masked) => {
+            if (appended === '8' && masked.value === '') {
+                return '';
+            }
+            return appended;
+        },
+    });
+
+    const popupLinks = document.querySelectorAll(".popup-link");
+    const body = document.querySelector("body");
+    const lockPadding = document.querySelectorAll(".lock-padding");
+  
+    let unlock = true;
+  
+    const timeout = 800;
+  
+    if (popupLinks && body && lockPadding && unlock && timeout) {
+      if (popupLinks.length > 0) {
+        for (let index = 0; index < popupLinks.length; index++) {
+          const popupLink = popupLinks[index];
+          popupLink.addEventListener("click", function (e) {
+            const popupName = popupLink.getAttribute("href").replace("#", "");
+            const currentPopup = document.getElementById(popupName);
+            popupOpen(currentPopup);
+            e.preventDefault;
+          });
+        }
+      }
+  
+      const popupCloseIcon = document.querySelectorAll(".close-popup");
+      if (popupCloseIcon.length > 0) {
+        for (let index = 0; index < popupCloseIcon.length; index++) {
+          const el = popupCloseIcon[index];
+          el.addEventListener("click", function (e) {
+            popupClose(el.closest(".popup"));
+            e.preventDefault;
+          });
+        }
+      }
+  
+      function popupOpen(currentPopup) {
+        if (currentPopup && unlock) {
+          const popupActive = document.querySelector(".popup._active");
+          if (popupActive) {
+            popupClose(popupActive, false);
+          } else {
+            bodyLock();
+          }
+          currentPopup.classList.add("_active");
+          currentPopup.addEventListener("click", function (e) {
+            if (!e.target.closest(".popup__content")) {
+              popupClose(e.target.closest(".popup"));
+            }
+          });
+        }
+      }
+  
+      function popupClose(popupActive, doUnlock = true) {
+        if (unlock) {
+          popupActive.classList.remove("_active");
+          if (doUnlock) {
+            bodyUnlock();
+          }
+        }
+      }
+  
+      function bodyLock() {
+        const lockPaddingValue =
+          window.innerWidth -
+          document.querySelector("body").offsetWidth +
+          "px";
+  
+        if (lockPadding.length > 0) {
+          for (let index = 0; index < lockPadding.length; index++) {
+            const el = lockPadding[index];
+            el.style.paddingRight = lockPaddingValue;
+          }
+        }
+        body.style.paddingRight = lockPaddingValue;
+        body.classList.add("_locked");
+  
+        unlock = false;
+        setTimeout(function () {
+          unlock = true;
+        }, timeout);
+      }
+  
+      function bodyUnlock() {
+        setTimeout(function () {
+          if (lockPadding.length > 0) {
+            for (let index = 0; index < lockPadding.length; index++) {
+              const el = lockPadding[index];
+              el.style.paddingRight = "0px";
+            }
+          }
+          body.style.paddingRight = "0px";
+          body.classList.remove("_locked");
+        }, timeout);
+  
+        unlock = false;
+        setTimeout(function () {
+          unlock = true;
+        }, timeout);
+      }
+  
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          const popupActive = document.querySelector(".popup._active");
+          popupClose(popupActive);
+        }
+      });
+    }
+   
 

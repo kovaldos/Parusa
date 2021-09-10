@@ -7,7 +7,13 @@ block content
     main
         section.map
             .map__box#map
-            .map__item 
-                
+            .map__item
+                h2.map__title Выберите свой район
+                p.map__text Наш менеджер свяжется с Вами и предложит свободные места с графиками аренды
+                form.map__form(action="#")
+                    input.map__form-input(type="text" placeholder="Выберите район")
+                    a.map__form-submit-btn.popup-link(href="#popup") Выбрать район
+
+
 
 

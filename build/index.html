@@ -13,10 +13,35 @@
     <main>
       <section class="map">
         <div class="map__box" id="map"></div>
-        <div class="map__item"> </div>
+        <div class="map__item">
+          <h2 class="map__title">Выберите свой район</h2>
+          <p class="map__text">Наш менеджер свяжется с Вами и предложит свободные места с графиками аренды</p>
+          <form class="map__form" action="#">
+            <input class="map__form-input" type="text" placeholder="Выберите район"><a class="map__form-submit-btn popup-link" href="#popup">Выбрать район</a>
+          </form>
+        </div>
       </section>
     </main>
+    <div class="popup" id="popup">
+      <div class="popup__body">
+        <div class="popup__content">
+          <button class="popup__close close-popup" type="button"><img src="./assets/images/close-popup.svg"></button>
+          <h2 class="popup__title">Запросить график аренды</h2>
+          <p class="popup__text">Заолните поля ниже и мы свяжемся с Вами в ближайшее время.</p>
+          <form class="popup__form" action="#">
+            <input class="popup__form-input" id="name" type="text" placeholder="Имя" required pattern="^[а-яА-ЯёЁa-zA-Z0-9]+$">
+            <input class="popup__form-input" id="phone-number" type="tel" placeholder="Телефон" required pattern="+7s?[(]{0,1}9[0-9]{2}[)]{0,1}s?d{3}[-]{0,1}d{2}[-]{0,1}d{2}">
+            <input class="popup__form-input" id="email" type="email" placeholder="E-mail" required pattern="[^@s]+@[^@s]+">
+            <div class="popup__agreement">
+              <button class="popup-link popup__form-button" type="submit">Отправить</button>
+              <p class="popup__agreement-text">Отправляя данную форму, Вы соглашаетесь на обработку персональных данных</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=aaf0ec15-8970-4357-b2ef-1c76ab7adb11&amp;lang=ru_RU&amp;coordorder=longlat" type="text/javascript"></script>
+    <script src="https://unpkg.com/imask"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="assets/scripts/main.js"></script>
   </body>
