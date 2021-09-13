@@ -1,6 +1,5 @@
 let myMap = document.getElementById('map'),
-    regionNames = ["Санкт-Петербург, Кировский район", "Санкт-Петербург, Адмиралтейский район", "Санкт-Петербург, Василеостровский район"],
-    // regionNames = ["Санкт-Петербург, Кировский район", "Санкт-Петербург, Адмиралтейский район", "Санкт-Петербург, Василеостровский район", "Санкт-Петербург, Выборгский район", "Санкт-Петербург, Калининский район", "Санкт-Петербург, Колпинский район", "Санкт-Петербург, Красногвардейский район", "Санкт-Петербург, Красносельский район", "Санкт-Петербург, Кронштадтcкий район", "Санкт-Петербург, Курортный район", "Санкт-Петербург, Московский район", "Санкт-Петербург, Невский район", "Санкт-Петербург, Петроградский район", "Санкт-Петербург, Петродворцовый район", "Санкт-Петербург, Приморский район", "Санкт-Петербург, Пушкинский район", "Санкт-Петербург, Фрунзенский район", "Санкт-Петербург, Центральный район"],
+    regionNames = ["Санкт-Петербург, Кировский район", "Санкт-Петербург, Адмиралтейский район", "Санкт-Петербург, Василеостровский район", "Санкт-Петербург, Выборгский район", "Санкт-Петербург, Калининский район", "Санкт-Петербург, Колпинский район", "Санкт-Петербург, Красногвардейский район", "Санкт-Петербург, Красносельский район", "Санкт-Петербург, Кронштадтcкий район", "Санкт-Петербург, Курортный район", "Санкт-Петербург, Московский район", "Санкт-Петербург, Невский район", "Санкт-Петербург, Петроградский район", "Санкт-Петербург, Петродворцовый район", "Санкт-Петербург, Приморский район", "Санкт-Петербург, Пушкинский район", "Санкт-Петербург, Фрунзенский район", "Санкт-Петербург, Центральный район"],
     center = [30.313218, 59.960850],
     zoom = 10;
 
@@ -21,35 +20,43 @@ if (myMap) {
             myMap.behaviors.disable('drag');
         };
    
-        regionNames.forEach (regionName => {
-            // 1. Запрашиваем через геокодер район (у Яндекса этой возможности пока нет, придется пользоваться OSM)
-            let url = "http://nominatim.openstreetmap.org/search";
-            $.getJSON(url, { q: regionName, format: "json", polygon_geojson: 1 })
-                .then(function (data) {
-                    $.each(data, function (ix, place) {
-                        if ("relation" == place.osm_type) {
-                            // 2. Создаем полигон с нужными координатами
-                            let p = new ymaps.Polygon(place.geojson.coordinates);
-                            // 3. Добавляем полигон на карту
-                            myMap.geoObjects.add(p);
-                            p.events.add('mouseenter', function (e) {
-                                let target = e.get('target');
-                                console.log(target);
-                                options.fill = false;
-                                target.options.fillColor="#000000";
-
-                                // ToDo найти свойство тип курсора и заливка в объекте-таргете
-                               
-                               
-                            })
-
+        // regionNames.forEach (regionName => {
+        //     // 1. Запрашиваем через геокодер район (у Яндекса этой возможности пока нет, придется пользоваться OSM)
+        //     let url = "http://nominatim.openstreetmap.org/search";
+        //     $.getJSON(url, { q: regionName, format: "json", polygon_geojson: 1 })
+        //         .then(function (data) {
+        //             $.each(data, function (ix, place) {
+        //                 if ("relation" == place.osm_type) {
+        //                     // 2. Создаем полигон с нужными координатами и задаем ему необходимые свойства
+        //                     let myPolygon = new ymaps.Polygon((place.geojson.coordinates), {}, {
+        //                       fillColor: 'FFFFFF00',
+        //                       strokeColor: 'FFFFFF00',
+        //                       myRegionName: regionName.replace("Санкт-Петербург, ", ""), 
+        //                     });
+        //                     myPolygon.events.add('mouseenter', function (e) {
+        //                       let target = e.get('target');
+        //                       target.options.set('fillColor') == 'FFFFFF80'
+        //                     });
+        //                     myPolygon.events.add('mouseleave', function (e) {
+        //                       let target = e.get('target');
+        //                       target.options.set('fillColor', 'FFFFFF00')
+        //                     });
+        //                     myPolygon.events.add('click', function (e) {
+        //                       let target = e.get('target');
+        //                       let input = document.querySelector('.map__choose-box-input');
+        //                       let district = target.options.get('myRegionName')
+        //                       input.innerHTML = district;
+        //                     })
                             
-                        }
-                    });
-                }, function (err) {
-                    console.log(err);
-                });
-        })            
+        //                     // 3. Добавляем полигон на карту
+        //                     myMap.geoObjects.add(myPolygon);
+                                                           
+        //                 }
+        //             });
+        //         }, function (err) {
+        //             console.log(err);
+        //     });
+        // })            
     }
 };
 
@@ -169,5 +176,17 @@ const phoneMask = IMask(
         }
       });
     }
+
+    const chooseBtn = document.querySelector('.map__choose-box-btn');
+    let districtValue = document.querySelector('.map__choose-box-input').innerHTML;
+    if(chooseBtn && districtValue) {
+      chooseBtn.addEventListener('click', () => {
+        let formInput = document.getElementById('district-value');
+        formInput.innerHTML = districtValue;
+        console.log(formInput);
+      })
+    }
+      
+
    
 
