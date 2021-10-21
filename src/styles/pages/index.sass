@@ -1,0 +1,127 @@
+@import ../common/_vars
+
+.section
+	width: 100%
+	height: 100%
+	margin: 110px 0 0 0
+	padding: 0 0 40px 0
+	&__heading
+		display: flex
+		justify-content: center
+		align-items: center
+		margin: 0 0 60px 0
+	&__title
+		font-size: 48px
+		line-height: 150%
+		color: $color-Black_1
+		&_upper
+			font-family: $font-secondary
+			font-size: 32px
+			line-height: 150%
+			text-transform: uppercase
+			color: $color-Black_1
+
+.benefits
+	&__content
+		display: grid
+		grid-template-columns: 1fr 1fr 1fr
+		grid-template-rows: 1fr 1fr
+		grid-column-gap: 33px
+		grid-row-gap: 0
+	&__item-img-box,
+	&__item-title
+		margin: 0 0 10px 0
+	&__item-title,
+	&__item-text
+		color: $color-Black_2
+	&__btn-box
+		margin: 30px 0 0 0
+		display: flex
+		justify-content: center
+		align-items: center
+	&__link-btn
+		width: 220px
+		height: 40px
+		background: linear-gradient(180deg, #54A5E2 0%, #3382BE 100%)
+		box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.1)
+		border-radius: 5px
+		display: flex
+		justify-content: center
+		align-items: center
+		color: $color-White
+		font-weight: 600
+		font-size: 14px
+		line-height: 150%
+
+.our-clients
+	&__title
+		font-family: $font-secondary
+	&__content
+		display: grid
+		grid-template-columns: repeat(6, 1fr)
+		grid-column-gap: 32px
+		grid-row-gap: 10px
+	&__item
+		width: 100%
+		max-width: 180px
+		display: flex
+		justify-content: center
+		align-items: center
+	&__img-box
+		width: 100%
+
+.reviews
+	&__title
+		font-family: $font-secondary
+	&__slider-block
+		display: flex
+		justify-content: center
+		align-items: center
+		min-width: 0
+	&__slider
+		position: relative
+		width: 1230px
+		padding: 0 30px
+		overflow: hidden
+	&__btn-prev,
+	&__btn-next
+		background: #FFFFFF
+		box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2)
+		width: 50px
+		height: 50px
+		display: flex
+		justify-content: center
+		align-items: center
+		border-radius: 100%
+	.swiper-button-prev,
+	.swiper-button-next
+		width: unset
+	.swiper-button-prev
+		left: 1px
+	.swiper-button-next
+		right: 1px
+
+.faq
+	&__accordion
+		.ac
+			.ac-header
+				.ac-trigger
+					font: 24px/150% $font-primary
+					font-weight: 600
+					color: $color-Black_2
+					background: #F0F0F0
+					padding: 17px 20px
+				.ac-trigger:focus
+					color: $color-Black_2
+				.ac-trigger::after
+					content: url('/assets/images/svg/accordion-arrow-down.svg')
+					width: 23px
+					right: 20px
+					transition: all 0.5s ease 0s
+			.ac-text
+				font: 16px/150% $font-primary
+				max-width: 806px
+				color: $color-Black_2
+		.ac.is-active
+			.ac-trigger::after
+				transform: translate(0,-50%) rotate(180deg)		

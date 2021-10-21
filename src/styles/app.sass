@@ -1,0 +1,65 @@
+
+@import ./common/_vars
+@import ./common/fonts.sass
+
+*
+	outline-offset: 4px
+
+body
+	font-family: $font-primary
+	font-style: normal
+	font-weight: normal
+	font-size: 18px
+	color: $color-Black_2
+	background: #FFFFFF
+	min-width: 320px
+	display: flex
+	flex-direction: column
+
+.wrapper
+	max-width: 1920px
+	margin: 0 auto		
+
+.main
+	flex: 1 1 auto	
+
+
+a
+	transition: 200ms ease-in-out 0ms
+	transition-property: color
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select,
+button
+	appearance: none
+	font-family: $font-primary
+
+// https://github.com/WICG/focus-visible
+.js-focus-visible :focus:not(.focus-visible)
+	outline: none
+
+.container
+	max-width: $content-max-width
+	width: 100%
+	height: 100%
+	padding: $content-padding
+	margin: 0 auto
+
+@import ./common/_nullstyle
+@import "./common/header.sass"
+@import "./pages/index.sass"
+@import "./common/footer.sass"
+@import ./common/_adaptive
+	
+// @media screen and (max-width: 1274px) {
+
+// }
+
+// @media screen and (max-width: 960px) {
+
+// }
+
+// @media screen and (max-width: 768px) {
+
+// }
