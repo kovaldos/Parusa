@@ -14,6 +14,7 @@
 		font-size: 48px
 		line-height: 150%
 		color: $color-Black_1
+		text-align: center
 		&_upper
 			font-family: $font-secondary
 			font-size: 32px
@@ -66,9 +67,11 @@
 		font-family: $font-secondary
 	&__content
 		display: grid
-		grid-template-columns: repeat(6, 1fr)
-		grid-column-gap: 32px
+		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))
 		grid-row-gap: 10px
+		justify-items: center
+		grid-template-rows: repeat(auto-fill, minmax(100px, 1fr))
+
 	&__item
 		width: 100%
 		max-width: 180px

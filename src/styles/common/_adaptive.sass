@@ -11,20 +11,25 @@
 			font-size: 40px
 			&_upper
 				font-size: 26px
-	
+
 	.benefits
 		&__content
 			grid-row-gap: 50px
 
-	.faq__accordion .ac-header .ac-trigger
-		font: 18px/110% "Open Sans", sans-serif
-	.faq__accordion .ac-text
-		max-width: 700px
+	.faq__accordion
+		.ac-header
+			.ac-trigger
+				font: 18px/110% $font-primary
+	.faq__accordion
+		.ac-text
+			max-width: 700px
 
 @media screen and (max-width: 768px)
-	.section__title_upper
-		font-size: 22px
-	
+	.section
+		&__title
+			&_upper
+				font-size: 22px
+
 	.benefits
 		&__content
 			grid-template-columns: 1fr 1fr
@@ -33,3 +38,22 @@
 		&__item-text
 			font-size: 14px
 
+@media screen and (max-width: 640px)
+	.section
+		&__title
+			&_upper
+				font-size: 18px
+
+	.benefits
+		&__content
+			grid-template-columns: 1fr
+
+	.faq__accordion
+		.ac-header
+			.ac-trigger
+				font: 16px/110% $font-primary
+				padding: 10px 30px 10px 10px
+		.ac
+			.ac-text
+				max-width: 80%
+				font: 14px/100% $font-primary
