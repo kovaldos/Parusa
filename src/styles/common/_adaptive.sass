@@ -14,6 +14,7 @@
 
 	.benefits
 		&__content
+			grid-template-columns: 1fr 1fr
 			grid-row-gap: 50px
 
 	.faq__accordion
@@ -31,8 +32,6 @@
 				font-size: 22px
 
 	.benefits
-		&__content
-			grid-template-columns: 1fr 1fr
 		&__item-title
 			font-size: 18px
 		&__item-text
@@ -48,6 +47,11 @@
 		&__content
 			grid-template-columns: 1fr
 
+	.our-clients
+		&__content
+			grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))
+			grid-column-gap: 5px
+
 	.faq__accordion
 		.ac-header
 			.ac-trigger
@@ -57,3 +61,8 @@
 			.ac-text
 				max-width: 80%
 				font: 14px/100% $font-primary
+
+@media screen and (max-width: 425px)
+	.our-clients
+		&__content
+			grid-template-columns: repeat(auto-fill, minmax(145px, 1fr))
