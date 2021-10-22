@@ -20,20 +20,28 @@
 			line-height: 150%
 			text-transform: uppercase
 			color: $color-Black_1
+			text-align: center
 
 .benefits
 	&__content
 		display: grid
 		grid-template-columns: 1fr 1fr 1fr
-		grid-template-rows: 1fr 1fr
+		grid-template-rows: fit-content(50%)
 		grid-column-gap: 33px
-		grid-row-gap: 0
+		grid-row-gap: 90px
+	&__item
+		padding: $content-padding-mob
 	&__item-img-box,
 	&__item-title
 		margin: 0 0 10px 0
-	&__item-title,
+	&__item-title
+		color: $color-Black_2
+		font-weight: 600
+		font-size: 24px
+		line-height: 150%
 	&__item-text
 		color: $color-Black_2
+		font-size: 16px
 	&__btn-box
 		margin: 30px 0 0 0
 		display: flex
@@ -111,25 +119,24 @@
 		font-family: $font-secondary
 		color: $color-Black_2
 	&__accordion
-		.ac
-			.ac-header
-				.ac-trigger
-					font: 24px/150% $font-primary
-					font-weight: 600
-					color: $color-Black_2
-					background: #F0F0F0
-					padding: 17px 20px
-				.ac-trigger:focus
-					color: $color-Black_2
-				.ac-trigger::after
-					content: url('/assets/images/svg/accordion-arrow-down.svg')
-					width: 23px
-					right: 20px
-					transition: all 0.5s ease 0s
-			.ac-text
-				font: 16px/150% $font-primary
-				max-width: 806px
+		.ac-header
+			.ac-trigger
+				font: 24px/150% $font-primary
+				font-weight: 600
 				color: $color-Black_2
+				background: #F0F0F0
+				padding: 17px 20px
+			.ac-trigger:focus
+				color: $color-Black_2
+			.ac-trigger::after
+				content: url('/assets/images/svg/accordion-arrow-down.svg')
+				width: 23px
+				right: 20px
+				transition: all 0.5s ease 0s
+		.ac-text
+			font: 16px/150% $font-primary
+			max-width: 806px
+			color: $color-Black_2
 		.ac.is-active
 			.ac-trigger::after
-				transform: translate(0,-50%) rotate(180deg)		
+				transform: translate(0,-50%) rotate(180deg)
