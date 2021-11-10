@@ -1,0 +1,15 @@
+extends ../template
+
+block variables
+    - var title = 'Размещение баннеров'
+
+block content
+    main
+        section.map
+            .map__box#map
+            .map__item
+                h2.map__title Выберите свой район
+                p.map__text Наш менеджер свяжется с Вами и предложит свободные места с графиками аренды
+                .map__choose-box
+                    .map__choose-box-input Выберите район на карте
+                    a.map__choose-box-btn.popup-link(href="#popup") Выбрать район
