@@ -1,0 +1,17 @@
+mixin mainBanner ()
+	-
+		const data = {
+			title: "Печать на\u00A0холсте",
+			subtitle: "в Санкт-Петербурге",
+			btnText: "Заказать"
+		}
+	
+	section.section.main-banner 
+		.main-banner__pic
+			+picture("content", "main-banner-bg", "jpg", "100%", 645, "Картина ночного города висит на стене над диваном").main-banner__img
+		.container.main-banner__container 
+			.main-banner__heading 
+				h1.main-banner__title
+					span.main-banner__title-span-big=data.title
+					span.main-banner__title-span-small=data.subtitle
+				button.btn.main-banner__btn=data.btnText

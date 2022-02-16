@@ -1,0 +1,115 @@
+mixin sizeAndPrice()
+	-
+		const data = {
+			title: "Размеры и цены",
+			text: "Вам доступен один из 34 стандартных размеров, которые сгруппированы по типам ориентации. Так же есть возможность заказать индивидуальный размер работы. Экосольвентная высококачественная печать на современном оборудовании.",
+			list1Title: "В стоимость работы входит:",
+			list1: [
+				"печать на натуральном холсте",
+				"подрамник",
+				"натяжка на подрамник",
+			],
+			list2Title: "Дополнительные услуги:",
+			list2: [
+				"Услуги дизайнера по обработке и редактированию фото: от 500 руб.",
+			],
+			filter: {
+				type: [
+					"Альбомные",
+					"Портретные",
+					"Квадратные",
+					"Панорамные",
+				],
+				size: [
+					"30х20",
+					"40х30",
+					"45х30",
+					"50х40",
+					"60х40",
+					"50х50",
+					"70х40",
+					"75х50",
+					"80х60",
+					"50х40",
+					"100х70",
+					"120х80",
+				],
+			},
+			result: {
+				price: "цена",
+				amount: "2 238",
+				currency: "",
+			},
+		}
+
+	section.section.size-and-price 
+		.size-and-price__wrapper.size-and-price__wrapper--top
+			.container.size-and-price__container
+				.size-and-price__heading.heading--center
+					h2.size-and-price__title.title--h2=data.title
+				.size-and-price__columns 
+					.size-and-price__col.col-01
+						.size-and-price__text-wrapper
+							p.size-and-price__text=data.text
+							.size-and-price__lists
+								.size-and-price__list-wrapper
+									h3.size-and-price__list-title=data.list1Title
+									ul.size-and-price__list
+										each item in data.list1 
+											li.size-and-price__list-item=item
+								.size-and-price__list-wrapper
+									h3.size-and-price__list-title=data.list2Title
+									ul.size-and-price__list
+										each item in data.list2 
+											li.size-and-price__list-item=item
+					.size-and-price__col.col-02
+						.size-and-price__pic 
+							+picture("content", "size-and-price-img", "png", 508, 317, "Единая группа картин разных размеров с изображением ночного города").size-and-price__img
+		.size-and-price__wrapper.size-and-price__wrapper--bottom
+			.size-and-price__filter-bg
+				+picture("content", "size-and-price-filter-bg", "jpg", "100%", 645, "Интерьер комнаты с картиной на стене")
+			.container.size-and-price__container
+				nav.size-and-price__filter-nav
+					.size-and-price__filter-nav-row 
+						ul.size-and-price__filter-list.list-type 
+							each item, index in data.filter.type
+								if index == 0
+									li.size-and-price__filter-list-item 
+										label.size-and-price__filter-label
+											input.size-and-price__filter-switch(type="radio" name="type" value=item checked)
+											span.size-and-price__filter-label-span=item
+								else
+									li.size-and-price__filter-list-item 
+										label.size-and-price__filter-label
+											input.size-and-price__filter-switch(type="radio" name="type" value=item)
+											span.size-and-price__filter-label-span=item
+					.size-and-price__filter-nav-row
+						ul.size-and-price__filter-list.list-size 
+							each item, index in data.filter.size
+								if index == 0
+									li.size-and-price__filter-list-item 
+										label.size-and-price__filter-label
+											input.size-and-price__filter-switch(type="radio" name="size" value=item checked)
+											span.size-and-price__filter-label-span=item
+								else
+									li.size-and-price__filter-list-item 
+										label.size-and-price__filter-label
+											input.size-and-price__filter-switch(type="radio" name="size" value=item)
+											span.size-and-price__filter-label-span=item
+				.size-and-price__filter-result
+					.size-and-price__filter-result-block
+						.size-and-price__filter-result-total
+							span.size-and-price__filter-result-price=data.result.price
+							span.size-and-price__filter-result-amount=data.result.amount
+							span.size-and-price__filter-result-amount-currency
+								+icon("icon-rouble", 20, 20)
+					.size-and-price__filter-result-pic-wrapper
+						.size-and-price__filter-result-pic-box
+							.size-and-price__filter-result-pic.pic--square.is-hidden
+								+picture("content", "size-and-price-filter-img", "jpg", 288, 288, "Картина на стене с изображением замка на фоне луны").size-and-price__filter-result-img.img--square
+							.size-and-price__filter-result-pic.pic--album
+								img.size-and-price__filter-result-img.img--album(src="https://via.placeholder.com/470x288.jpg" alt="Картина на стене")
+							.size-and-price__filter-result-pic.pic--portrait.is-hidden
+								img.size-and-price__filter-result-img.img--portrait(src="https://via.placeholder.com/202x288.jpg" alt="Картина на стене")
+
+

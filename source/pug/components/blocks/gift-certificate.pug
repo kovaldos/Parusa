@@ -1,0 +1,34 @@
+mixin giftCert ()
+	-
+		const data = {
+			titleAbove: "всегда в наличии",
+			titleColored: "Подарочные ",
+			title: "сертификаты",
+			btnText: "Заказать",
+			bg: {
+				src: "./img/svg/gift-cert-bg.svg",
+				alt: "Рисованные волны синего и голубого цветов на белом фоне",
+			},
+			certPic: {
+				src: "./img/svg/gift-cert-img.svg",
+				alt: "Изображение подарочного сертификата номиналом 2000 рублей",
+			}
+
+		}
+
+	section.section.gift-cert
+		.gift-cert__bg-pic 
+			img(src=data.bg.src alt=data.bg.alt).gift-cert__bg
+		.container.gift-cert__container 
+			.gift-cert__columns
+				.gift-cert__col.col-01
+					.gift-cert__heading
+						h2.gift-cert__title 
+							span.gift-cert__title-above=data.titleAbove
+							span.gift-cert__title-colored=data.titleColored  
+							span.gift-cert__title-beyond=data.title
+					.gift-cert__btn-wrapper
+						button.btn.gift-cert__btn=data.btnText
+				.gift-cert__col.col-02 
+					.gift-cert__pic
+						img(src=data.certPic.src alt=data.certPic.alt).gift-cert__img

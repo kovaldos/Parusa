@@ -1,0 +1,65 @@
+mixin gallery ()
+	-
+		const data = {
+			title: "Галерея",
+			items: [
+				{
+					title: "Арт",
+					path: "content",
+					name: "gallery-img-1",
+					alt: "Образец печати на холсте в виде картины на арт-тематику",
+				},
+				{
+					title: "Природа",
+					path: "content",
+					name: "gallery-img-2",
+					alt: "Образец печати на холсте в виде картины на тематику природы",
+				},
+				{
+					title: "Любовь",
+					path: "content",
+					name: "gallery-img-3",
+					alt: "Образец печати на холсте в виде картины на тематику любви",
+				},
+				{
+					title: "Города",
+					path: "content",
+					name: "gallery-img-4",
+					alt: "Образец печати на холсте в виде картины на городскую тематику",
+				},
+				{
+					title: "Спорт",
+					path: "content",
+					name: "gallery-img-5",
+					alt: "Образец печати на холсте в виде картины на спортивную тематику",
+				},
+				{
+					title: "Животные",
+					path: "content",
+					name: "gallery-img-6",
+					alt: "Образец печати на холсте в виде картины на тематику животных",
+				},
+				{
+					title: "Абстракция",
+					path: "content",
+					name: "gallery-img-7",
+					alt: "Образец печати на холсте в виде картины на абстрактную тематику",
+				},
+				{
+					title: "Комиксы",
+					path: "content",
+					name: "gallery-img-8",
+					alt: "Образец печати на холсте в виде картины на тематику комиксов",
+				},
+			],
+		}
+
+	section.section.gallery
+		.container.gallery__container 
+			.gallery__heading.heading--center
+				h2.gallery__title.title--h2=data.title
+			.gallery__items 
+				each item in data.items 
+					a.gallery__item(href="#")  
+						h3.gallery__item-title= item.title 
+						+picture(item.path, item.name, "png", 270, 190, item.alt).gallery__item-pic 

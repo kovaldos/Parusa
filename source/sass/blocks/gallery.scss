@@ -1,0 +1,44 @@
+.gallery {
+	padding: 70px 0 0;
+	&__heading {
+		margin-bottom: 30px;
+	}
+	&__title {
+		margin: 0;
+		padding: 0;
+	}
+	&__items {
+		margin: 80px 0 0;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: auto;
+		grid-column-gap: 30px;
+		grid-row-gap: 50px;
+	}
+	&__item {
+		overflow: hidden;
+		border-radius: 5px;
+		&-title {
+			margin: 0;
+			padding: 0;
+			font-weight: bold;
+			font-size: 20px;
+			line-height: 20px;
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		&-pic {
+			display: inline-block;
+			transition: transform $trans-default;
+		}
+		&:hover & {
+			&-pic {
+				transform: scale(1.1);
+			}
+		}
+		&:focus-visible {
+			outline: none;
+			box-shadow: 0 0 3px $color-suva-grey;
+		}
+	}
+}
