@@ -1,11 +1,21 @@
 .size-and-price {
 	padding: 100px 0 0;
+	@include vp-767 {
+		padding: 50px 0 0;
+	}
 	&__wrapper {
 		&--bottom {
 			width: 100%;
 			height: 790px;
 			position: relative;
 			padding: 60px 0 0;
+			@include vp-1023 {
+				height: 80vh;
+				padding: 1em 0 0;
+			}
+			@include vp-767 {
+				height: 90vh;
+			}
 		}
 	}
 	&__container {
@@ -13,6 +23,9 @@
 	}
 	&__heading {
 		margin-bottom: 30px;
+		@include vp-767 {
+			margin-bottom: 1em;
+		}
 	}
 	&__title {
 		width: fit-content;
@@ -23,10 +36,22 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 30px;
+		@include vp-767 {
+			grid-template-columns: 1fr;
+		}
 	}
 	&__col {
+		@include vp-767 {
+			justify-self: center;
+		}
 		&.col-01 {
 			padding: 80px 0;
+			@include vp-767 {
+				padding: 1.2em 0 0 2em;
+			}
+			@include vp-425 {
+				padding: 1em 0 0;
+			}
 		}
 		&.col-02 {
 			padding: 40px 30px;
@@ -40,9 +65,18 @@
 	}
 	&__lists {
 		display: flex;
+		@include vp-425 {
+			flex-direction: column;
+		}
 	}
 	&__list-wrapper {
 		width: 50%;
+		@include vp-425 {
+			width: 100%;
+			&:not(:last-of-type) {
+				margin-bottom: 1.5em;
+			}
+		}
 	}
 	&__list-title {
 		font-weight: 600;
@@ -59,6 +93,8 @@
 			font-size: 14px;
 			line-height: 20px;
 			margin-bottom: 5px;
+			position: relative;
+			padding: 0 0 0 20px;
 			&::before {
 				content: "";
 				display: inline-block;
@@ -66,6 +102,9 @@
 				height: 1px;
 				width: 13px;
 				background-color: $color-default-black;
+				position: absolute;
+				top: 10px;
+				left: 0;
 			}
 		}
 	}
@@ -84,6 +123,9 @@
 				justify-content: center;
 				&:not(:last-child) {
 					margin-bottom: 30px;
+					@include vp-1023 {
+						margin-bottom: 1em;
+					}
 				}
 			}
 		}
@@ -92,6 +134,10 @@
 			list-style: none;
 			margin: 0;
 			padding: 0;
+			@include vp-1023 {
+				overflow-x: auto;
+				padding-bottom: 10px;
+			}
 			&.list-size & {
 				&-item {
 					.size-and-price__filter-label {
@@ -101,6 +147,12 @@
 							line-height: 20px;
 						}
 					}
+				}
+			}
+			&-item {
+				@include vp-1023 {
+					min-width: fit-content;
+					text-align: center;
 				}
 			}
 		}
@@ -179,8 +231,14 @@
 				}
 			}
 			&-pic-wrapper {
-				padding: 37px 0 0 115px;
+				padding: 37px 0 0 100px;
 				height: 325px;
+				@include vp-767 {
+					padding: 2em 0 0 2.5em;
+				}
+				@include vp-425 {
+					padding: 1.5em 0 0;
+				}
 			}
 			&-pic-box {
 				width: 50%;
@@ -188,6 +246,9 @@
 				height: auto;
 				display: flex;
 				justify-content: center;
+				@include vp-425 {
+					width: 100%;
+				}
 			}
 			&-pic {
 				width: fit-content;

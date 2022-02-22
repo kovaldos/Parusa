@@ -1,0 +1,111 @@
+mixin ordering()
+	-
+		const data = {
+			title: "Заявка на печать",
+			form: {
+				name: {
+					inputType: "text",
+					inputName: "Имя",
+					inputError: "Введите Ваше Имя",
+					inputLabel: "",
+					inputPlaceholder: "Имя",
+				},
+				email: {
+					inputType: "email",
+					inputName: "E-mail",
+					inputError: "Введите Email",
+					inputLabel: "",
+					inputPlaceholder: "E-mail",
+				},
+				phone: {
+					inputType: "tel",
+					inputName: "Телефон",
+					inputError: "Введите Ваш номер телефона",
+					inputLabel: "",
+					inputPlaceholder: "Телефон",
+					inputId: "phone-01",
+				},
+				orientation: {
+					isRequired: true,
+					label: "", 
+					placeholder: "Ориентация холста",
+					ariaLabel: "Ориентация холста",
+					optionsList: [
+						{text: "Альбомная", value: "Альбомная"},
+						{text: "Портретная", value: "Портретная"},
+						{text: "Квадратная", value: "Квадратная"},
+						{text: "Панорамная", value: "Панорамная"},
+					],
+				},
+				size: {
+					isRequired: true,
+					label: "", 
+					placeholder: "Размер холста",
+					ariaLabel: "Размер холста",
+					optionsList: [
+						{text: "30х20", value: "30х20"},
+						{text: "40х30", value: "40х30"},
+						{text: "45х30", value: "45х30"},
+						{text: "50х40", value: "50х40"},
+						{text: "60х40", value: "60х40"},
+						{text: "50х50", value: "50х50"},
+						{text: "70х40", value: "70х40"},
+						{text: "75х50", value: "75х50"},
+						{text: "80х60", value: "80х60"},
+						{text: "50х40", value: "50х40"},
+						{text: "100х70", value: "100х70"},
+						{text: "120х80", value: "120х80"},
+					],
+				},
+				uploadLabel: "Прикрепите файл",
+				info: {
+					title: "В указанную стоимость работ входит:",
+					list: [
+						"Печать на натуральном холсте;",
+						"Натяжка на подрамник;",
+						"Подрамник;",
+						"Доставка",
+						"Коррекции макета оплачиваются отдельно;",
+					],
+				},
+				total: {
+					text: "Итоговая стоимость заказа:",
+					amount: "500",
+					currency: "руб.",
+				},
+				btn: "Сделать заказ",
+				agreement: "Отправляя данную форму, Вы соглашаетесь на обработку персональных данных",
+			},
+		}
+
+	section.section.ordering#anchor01
+		.container.ordering__container 
+			.ordering__heading.heading--center 
+				h2.ordering__title.title--h2= data.title
+			.ordering__form-wrapper
+				.ordering__form(data-validate data-callback)
+					form
+						+custom-input(data.form.name).ordering__form-input(data-validate-type="text")
+						+custom-input(data.form.email).ordering__form-input(data-validate-type="email")
+						+custom-input(data.form.phone).ordering__form-input(data-validate-type="phone")
+						+custom-select(data.form.orientation)(data-select).custom-select.ordering__form-select
+						+custom-select(data.form.size)(data-select).custom-select.ordering__form-select
+						.ordering__form-file
+							label.ordering__form-file-label
+								+icon("icon-clip", 17, 20).ordering__form-file-icon
+								input(type="file", name="upload" multiple).ordering__form-file-input
+								span.ordering__form-file-label-text=data.form.uploadLabel
+						textarea(name="message" placeholder="Напишите нам любую информацию, которую вы считаете важной, по проекту").ordering__form-message
+						.ordering__form-info 
+							h3.ordering__form-info-title=data.form.info.title
+							ul.ordering__form-info-list 
+								each item in data.form.info.list
+									li.ordering__form-info-list-item=item
+						.ordering__form-total 
+							span.ordering__form-total-text=data.form.total.text 
+							span.ordering__form-total-amount=data.form.total.amount
+							span.ordering__form-total-currency=data.form.total.currency
+						button.btn.ordering__form-btn#ordering-submit(type="submit" data-reset)=data.form.btn
+						span.ordering__form-agreement=data.form.agreement
+		.ordering__bg 
+			+picture("content", "ordering-bg", "png", "100%", 636, "Полупрозрачный белый фон с волнистыми линиями")
