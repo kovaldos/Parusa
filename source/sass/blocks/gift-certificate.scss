@@ -6,16 +6,24 @@
 		height: auto;
 		margin: 5em 0 0;
 	}
+	@include vp-767 {
+		margin: 0;
+		padding: 98px 0 0;
+	}
 	&__bg-pic {
 		position: absolute;
 		top: -30px;
 		bottom: 0;
 		left: 0;
 		right: 0;
+		@include vp-767 {
+			top: 80px;
+			height: 545px;
+		}
 	}
 	&__bg {
 		@include vp-767 {
-			object-position: 5%;
+			object-position: 17%;
 		}
 	}
 	&__container {
@@ -33,13 +41,15 @@
 		@include vp-767 {
 			grid-template-columns: 1fr;
 			grid-row-gap: 2em;
+			padding: 161px 0 100px 0;
+			position: relative;
 		}
 	}
 	&__col {
 		&.col-01 {
 			padding: 93px 0 0;
 			@include vp-767 {
-				padding: 3em 0 0;
+				padding: 0;
 			}
 		}
 		&.col-02 {
@@ -80,6 +90,9 @@
 			align-items: center;
 			color: $color-default-white;
 			margin-bottom: 10px;
+			@include vp-767 {
+				letter-spacing: normal;
+			}
 		}
 		&-colored {
 			display: flex;
@@ -96,18 +109,27 @@
 		}
 	}
 	&__pic {
-		height: 340px;
-		@include vp-425 {
-			height: 280px;
-		}
+		height: auto;
 	}
 	&__btn {
+		@include vp-425 {
+			margin: 0;
+			width: 100%;
+			justify-content: center;
+			align-items: center;
+		}
 		&-wrapper {
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
 			@include vp-767 {
 				justify-content: flex-start;
+			}
+			@include vp-425 {
+				position: absolute;
+				bottom: 20px;
+				left: 0;
+				right: 0;
 			}
 		}
 		padding: 11px 40px;

@@ -1239,6 +1239,10 @@ button,
   height: inherit;
 }
 
+.main-banner__img_mobile {
+  display: none;
+}
+
 .main-banner__heading {
   margin: 184px 0 0 100px;
 }
@@ -1320,7 +1324,15 @@ button,
 }
 
 .size-and-price__col.col-02 {
-  padding: 40px 30px;
+  padding: 0;
+}
+
+.size-and-price__pic {
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
 .size-and-price__text {
@@ -1636,7 +1648,7 @@ button,
 }
 
 .gift-cert__pic {
-  height: 340px;
+  height: auto;
 }
 
 .gift-cert__btn {
@@ -2198,7 +2210,7 @@ button,
 
   .size-and-price__wrapper--bottom {
     height: 80vh;
-    padding: 1em 0 0;
+    padding: 3em 0 0;
   }
 
   .size-and-price__filter-nav-row:not(:last-child) {
@@ -2206,8 +2218,11 @@ button,
   }
 
   .size-and-price__filter-list {
-    overflow-x: auto;
     padding-bottom: 10px;
+  }
+
+  .size-and-price__filter-list.list-size {
+    overflow-x: auto;
   }
 
   .size-and-price__filter-list-item {
@@ -2243,12 +2258,24 @@ button,
   }
 
   .container {
-    padding: 0 16px;
+    padding: 0 20px;
+  }
+
+  .main-banner {
+    height: 640px;
+    padding: 110px 0;
+  }
+
+  .main-banner__pic {
+    border-radius: 0;
+    height: unset;
+    top: 110px;
+    bottom: 110px;
   }
 
   .main-banner__img img {
-    -o-object-position: 60%;
-    object-position: 60%;
+    -o-object-position: top;
+    object-position: top;
   }
 
   .main-banner__heading {
@@ -2256,9 +2283,25 @@ button,
   }
 
   .main-banner__title-span-big {
-    font-size: 36px;
-    line-height: 125%;
-    margin-bottom: 15px;
+    line-height: 50px;
+    margin-bottom: 20px;
+  }
+
+  .main-banner__btn {
+    position: absolute;
+    top: 441px;
+    margin: 0;
+    max-width: calc(100% - 2 * 20px);
+    width: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 
   .size-and-price {
@@ -2270,12 +2313,17 @@ button,
   }
 
   .size-and-price__heading {
-    margin-bottom: 1em;
+    margin-bottom: 1.7em;
   }
 
   .size-and-price__columns {
-    -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
   }
 
   .size-and-price__col {
@@ -2284,31 +2332,59 @@ button,
   }
 
   .size-and-price__col.col-01 {
-    padding: 1.2em 0 0 2em;
+    padding: 2em 0;
+  }
+
+  .size-and-price__filter-list.list-type {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 15px;
+  }
+
+  .size-and-price__filter-label {
+    padding: 5px;
   }
 
   .size-and-price__filter-result-pic-wrapper {
     padding: 2em 0 0 2.5em;
   }
 
+  .gift-cert {
+    margin: 0;
+    padding: 98px 0 0;
+  }
+
+  .gift-cert__bg-pic {
+    top: 80px;
+    height: 545px;
+  }
+
   .gift-cert__bg {
-    -o-object-position: 5%;
-    object-position: 5%;
+    -o-object-position: 17%;
+    object-position: 17%;
   }
 
   .gift-cert__columns {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
     grid-row-gap: 2em;
+    padding: 161px 0 100px 0;
+    position: relative;
   }
 
   .gift-cert__col.col-01 {
-    padding: 3em 0 0;
+    padding: 0;
   }
 
   .gift-cert__col.col-02 {
     -ms-grid-column-align: center;
     justify-self: center;
+  }
+
+  .gift-cert__title-above {
+    letter-spacing: normal;
   }
 
   .gift-cert__title-beyond {
@@ -2401,16 +2477,29 @@ button,
 }
 
 @media (max-width: 424px) {
-  .main-banner {
-    height: 100vh;
+  .main-banner__pic {
+    top: 110px;
+  }
+
+  .main-banner__img_mobile {
+    display: block;
+  }
+
+  .main-banner__img_desktop {
+    display: none;
   }
 
   .main-banner__heading {
     margin: 0;
+    padding: 20px 0 0;
   }
 
-  .size-and-price__col.col-01 {
-    padding: 1em 0 0;
+  .main-banner__title {
+    text-align: center;
+  }
+
+  .size-and-price__text {
+    font-size: 15px;
   }
 
   .size-and-price__lists {
@@ -2428,6 +2517,10 @@ button,
     margin-bottom: 1.5em;
   }
 
+  .size-and-price__filter-bg {
+    top: 280px;
+  }
+
   .size-and-price__filter-result-pic-wrapper {
     padding: 1.5em 0 0;
   }
@@ -2440,8 +2533,22 @@ button,
     font-size: 32px;
   }
 
-  .gift-cert__pic {
-    height: 280px;
+  .gift-cert__btn {
+    margin: 0;
+    width: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .gift-cert__btn-wrapper {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
   }
 
   .gallery__items {

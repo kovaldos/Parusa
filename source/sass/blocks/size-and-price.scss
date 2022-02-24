@@ -11,7 +11,7 @@
 			padding: 60px 0 0;
 			@include vp-1023 {
 				height: 80vh;
-				padding: 1em 0 0;
+				padding: 3em 0 0;
 			}
 			@include vp-767 {
 				height: 90vh;
@@ -24,7 +24,7 @@
 	&__heading {
 		margin-bottom: 30px;
 		@include vp-767 {
-			margin-bottom: 1em;
+			margin-bottom: 1.7em;
 		}
 	}
 	&__title {
@@ -37,7 +37,8 @@
 		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 30px;
 		@include vp-767 {
-			grid-template-columns: 1fr;
+			display: flex;
+			flex-direction: column-reverse;
 		}
 	}
 	&__col {
@@ -47,21 +48,26 @@
 		&.col-01 {
 			padding: 80px 0;
 			@include vp-767 {
-				padding: 1.2em 0 0 2em;
-			}
-			@include vp-425 {
-				padding: 1em 0 0;
+				padding: 2em 0;
 			}
 		}
 		&.col-02 {
-			padding: 40px 30px;
+			padding: 0;
 		}
+	}
+	&__pic {
+		max-width: fit-content;
+		margin: 0 auto;
+		padding: 40px 0;
 	}
 	&__text {
 		font-size: 16px;
 		line-height: 25px;
 		margin: 0 0 30px;
 		padding: 0;
+		@include vp-425 {
+			font-size: 15px;
+		}
 	}
 	&__lists {
 		display: flex;
@@ -115,6 +121,9 @@
 			bottom: 0;
 			left: 0;
 			right: 0;
+			@include vp-425 {
+				top: 280px;
+			}
 		}
 		&-nav {
 			&-row {
@@ -135,8 +144,19 @@
 			margin: 0;
 			padding: 0;
 			@include vp-1023 {
-				overflow-x: auto;
 				padding-bottom: 10px;
+			}
+			&.list-type {
+				@include vp-767 {
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					grid-row-gap: 15px;
+				}
+			}
+			&.list-size {
+				@include vp-1023 {
+					overflow-x: auto;
+				}
 			}
 			&.list-size & {
 				&-item {
@@ -171,6 +191,9 @@
 				font-weight: bold;
 				font-size: 18px;
 				line-height: 20px;
+			}
+			@include vp-767 {
+				padding: 5px;
 			}
 		}
 		&-switch {

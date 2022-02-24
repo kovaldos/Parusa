@@ -6,12 +6,20 @@ mixin mainBanner ()
 			btn: {
 				href: "#anchor01",
 				text: "Заказать",
-			}
+			},
+			bg: {
+				webpDt1x: "img/content/main-banner-bg.webp",
+				webpDt2x: "img/content/main-banner-bg@2x.webp 2x",
+				srcDt1x: "img/content/main-banner-bg.jpg",
+				srcDt2x: "img/content/main-banner-bg@2x.jpg 2x",
+				webpMob1x: "img/content/main-banner-bg-mob.webp",
+				webpMob2x: "img/content/main-banner-bg-mob@2x.webp 2x",
+				srcMob1x: "img/content/main-banner-bg-mob.jpg",
+				srcMob2x: "img/content/main-banner-bg-mob@2x.jpg 2x",
+			},
 		}
-	
+
 	section.section.main-banner 
-		//- .main-banner__pic
-		//- 	+picture("content", "main-banner-bg", "jpg", "100%", 645, "Картина ночного города висит на стене над диваном").main-banner__img
 		.container.main-banner__container 
 			.main-banner__heading 
 				h1.main-banner__title
@@ -19,4 +27,5 @@ mixin mainBanner ()
 					span.main-banner__title-span-small=data.subtitle
 				a.btn.main-banner__btn(href=data.btn.href)=data.btn.text
 		.main-banner__pic
-			+picture("content", "main-banner-bg", "jpg", "100%", 645, "Картина ночного города висит на стене над диваном").main-banner__img
+			+picture("content", "main-banner-bg", "jpg", "100%", 645, "Картина ночного города висит на стене над диваном").main-banner__img.main-banner__img_desktop
+			+picture("content", "main-banner-bg-mob", "jpg", "100%", 645, "Картина ночного города висит на стене над диваном").main-banner__img.main-banner__img_mobile
